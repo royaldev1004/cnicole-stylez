@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { useState, type FormEvent } from "react";
 import { Check } from "lucide-react";
+import { sendFormEmail } from "@/lib/email";
 
 export const Route = createFileRoute("/questionnaire")({
   head: () => ({
@@ -68,7 +69,67 @@ function Radio({ name, options }: { name: string; options: string[] }) {
 
 function Questionnaire() {
   const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent) => { e.preventDefault(); setSent(true); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    const str = (k: string) => (fd.get(k) as string) ?? "";
+    try {
+      await sendFormEmail({
+        data: {
+          type: "questionnaire",
+          firstName: str("firstName"),
+          lastName: str("lastName"),
+          phone: str("phone"),
+          email: str("email"),
+          clientType: str("clientType"),
+          duration: str("duration"),
+          appointmentStyle: str("appointmentStyle"),
+          location: str("location"),
+          shoppingFor: str("shoppingFor"),
+          occasion: str("occasion"),
+          gender: str("gender"),
+          age: str("age"),
+          height: str("height"),
+          weight: str("weight"),
+          bodyShape: str("bodyShape"),
+          coverage: str("coverage"),
+          dressSize: str("dressSize"),
+          suitSize: str("suitSize"),
+          pantsSize: str("pantsSize"),
+          legLength: str("legLength"),
+          shoeSize: str("shoeSize"),
+          waistSize: str("waistSize"),
+          shirtSize: str("shirtSize"),
+          neckArm: str("neckArm"),
+          braSize: str("braSize"),
+          shirtStyle: str("shirtStyle"),
+          shirtFit: str("shirtFit"),
+          pantsType: str("pantsType"),
+          pantsCut: fd.getAll("pantsCut") as string[],
+          braNotes: str("braNotes"),
+          aboutStyle: str("aboutStyle"),
+          trends: str("trends"),
+          colors_Love: str("colors_Love"),
+          colors_Maybe: str("colors_Maybe"),
+          colors_Pass: str("colors_Pass"),
+          brands_Love: str("brands_Love"),
+          brands_Pass: str("brands_Pass"),
+          budget: str("budget"),
+        },
+      });
+      setSent(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setError("Something went wrong — please try emailing Admin@CNicoleStylez.com directly.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <SiteLayout>
@@ -191,8 +252,15 @@ function Questionnaire() {
             </Section>
 
             <div className="pt-10">
-              <button type="submit" className="w-full py-4 text-xs uppercase tracking-[0.25em] rounded-sm bg-ink text-cream">
-                Submit Questionnaire
+              {error && (
+                <p className="mb-4 text-sm text-red-500">{error}</p>
+              )}
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full py-4 text-xs uppercase tracking-[0.25em] rounded-sm bg-ink text-cream disabled:opacity-60"
+              >
+                {sending ? "Sending..." : "Submit Questionnaire"}
               </button>
               <p className="mt-6 text-center text-xs text-muted-foreground">
                 Copyright CNicole's Stylez, LLC 2026

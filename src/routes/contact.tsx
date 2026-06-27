@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { useState, type FormEvent } from "react";
 import { Check, Mail, Phone, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/config";
+import { sendFormEmail } from "@/lib/email";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,9 +22,30 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent) => {
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    try {
+      await sendFormEmail({
+        data: {
+          type: "contact",
+          name: fd.get("name") as string,
+          email: fd.get("email") as string,
+          phone: (fd.get("phone") as string) ?? "",
+          message: fd.get("message") as string,
+        },
+      });
+      setSent(true);
+    } catch {
+      setError("Something went wrong — please try emailing Admin@CNicoleStylez.com directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -79,13 +101,17 @@ function Contact() {
               <Field label="Phone" name="phone" />
               <div>
                 <label className="eyebrow text-[0.65rem]">Message</label>
-                <textarea required maxLength={1000} rows={5} className="mt-2 w-full p-3 bg-background border border-border focus:border-gold-deep outline-none text-sm" />
+                <textarea required name="message" maxLength={1000} rows={5} className="mt-2 w-full p-3 bg-background border border-border focus:border-gold-deep outline-none text-sm" />
               </div>
+              {error && (
+                <p className="text-sm text-red-500">{error}</p>
+              )}
               <button
                 type="submit"
-                className="w-full py-4 text-xs uppercase tracking-[0.25em] rounded-sm bg-ink text-cream"
+                disabled={sending}
+                className="w-full py-4 text-xs uppercase tracking-[0.25em] rounded-sm bg-ink text-cream disabled:opacity-60"
               >
-                Send Message
+                {sending ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
