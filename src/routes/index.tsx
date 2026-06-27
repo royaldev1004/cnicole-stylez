@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ArrowRight, Sparkles, Shirt, Crown, Wand2 } from "lucide-react";
 import logoUrl from "@/assets/cnicole-logo.png";
+import heroImageUrl from "@/assets/hero-image.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,10 +62,10 @@ function Home() {
           <div className="relative fade-up">
             <div className="absolute -inset-4 rounded-sm bg-gradient-to-br from-[var(--color-gold-soft)] to-transparent blur-2xl opacity-60" />
             <div className="relative mx-auto max-w-md">
-              <PhotoPlaceholder
-                aspect="aspect-[4/5]"
-                label="Hero image coming soon"
-                sublabel="Editorial portrait or lifestyle photo"
+              <img
+                src={heroImageUrl}
+                alt="CNicole Stylez — curated fashion flat lay"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
               />
               <img
                 src={logoUrl}

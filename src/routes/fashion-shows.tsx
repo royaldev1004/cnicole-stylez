@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { Palette, ClipboardList, Footprints, Lightbulb, PackageCheck } from "lucide-react";
+import fsBackstage from "@/assets/fs-backstage.png";
+import fsEditorial from "@/assets/fs-editorial.png";
+import fsDesign from "@/assets/fs-design.png";
+import fsRunway from "@/assets/fs-runway.png";
 
 export const Route = createFileRoute("/fashion-shows")({
   head: () => ({
@@ -86,12 +89,16 @@ function FashionShows() {
           professional, and seamless experience for designers, models, and event organizers.
         </p>
 
-        {/* Runway gallery placeholders */}
+        {/* Runway gallery */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <PhotoPlaceholder aspect="aspect-[3/4]" label="Runway 01" sublabel="Backstage moment" />
-          <PhotoPlaceholder aspect="aspect-[3/4]" label="Runway 02" sublabel="Editorial look" />
-          <PhotoPlaceholder aspect="aspect-[3/4]" label="Runway 03" sublabel="Designer collaboration" />
-          <PhotoPlaceholder aspect="aspect-[3/4]" label="Runway 04" sublabel="Show production" />
+          {[
+            { src: fsBackstage, alt: "Backstage moment — clothing rack with steam" },
+            { src: fsEditorial, alt: "Editorial look — black blazer on mannequin" },
+            { src: fsDesign,    alt: "Designer collaboration — hands pinning fabric" },
+            { src: fsRunway,    alt: "Show production — empty runway with dramatic lighting" },
+          ].map(({ src, alt }) => (
+            <img key={alt} src={src} alt={alt} className="w-full aspect-[3/4] object-cover" />
+          ))}
         </div>
       </section>
 

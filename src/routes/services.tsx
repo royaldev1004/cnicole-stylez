@@ -1,9 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { packageGroups } from "@/lib/packages";
 import { Check, Star } from "lucide-react";
+import svcMoodboard from "@/assets/svc-moodboard.png";
+import svcCloset from "@/assets/svc-closet.png";
+import svcShoppingBags from "@/assets/svc-shopping-bags.png";
+import svcSuitFlatlay from "@/assets/svc-suit-flatlay.png";
+import svcBlazerMirror from "@/assets/svc-blazer-mirror.png";
+import svcEveningGown from "@/assets/svc-evening-gown.png";
+import svcOfficeDesk from "@/assets/svc-office-desk.png";
+import svcBackstageRack from "@/assets/svc-backstage-rack.png";
+
+const packageImages: Record<string, string> = {
+  "confidence-discovery":     svcMoodboard,
+  "wardrobe-revival":         svcCloset,
+  "signature-shopping":       svcShoppingBags,
+  "executive-image":          svcSuitFlatlay,
+  "complete-transformation":  svcBlazerMirror,
+  "wedding-special-occasion": svcEveningGown,
+  "executive-workshops":      svcOfficeDesk,
+  "confidence-collective":    svcBackstageRack,
+};
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -51,11 +69,10 @@ function Services() {
                       <Star size={10} className="fill-current" /> Signature · Most Popular
                     </span>
                   )}
-                  <PhotoPlaceholder
-                    aspect="aspect-[16/9]"
-                    label={p.name}
-                    sublabel="Package image placeholder"
-                    className="mb-6"
+                  <img
+                    src={packageImages[p.slug]}
+                    alt={p.name}
+                    className="w-full aspect-[16/9] object-cover mb-6"
                   />
                   <h3 className="text-2xl pr-4">{p.name}</h3>
                   <p className="mt-3 script text-3xl text-gold">{p.price}</p>
