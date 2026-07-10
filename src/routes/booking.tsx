@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { useState } from "react";
-import { Calendar, Video, MapPin, X } from "lucide-react";
+import { Video, MapPin, X } from "lucide-react";
+import { InlineWidget } from "react-calendly";
 import { packageGroups } from "@/lib/packages";
 
 type BookingSearch = { package?: string };
@@ -30,6 +31,11 @@ function Booking() {
   const { package: selectedSlug } = Route.useSearch();
   const [mode, setMode] = useState<"in-person" | "virtual">("in-person");
   const selected = selectedSlug ? allPackages.find((p) => p.slug === selectedSlug) : undefined;
+
+  // TODO: Update these URLs with Cheryl's real Calendly event links
+  // once confirmed — currently using placeholder URLs
+  const CALENDLY_IN_PERSON_URL = "https://calendly.com/cnicolemccain/30min";
+  const CALENDLY_VIRTUAL_URL = "https://calendly.com/cnicolemccain/new-meeting";
 
   return (
     <SiteLayout>
@@ -80,22 +86,15 @@ function Booking() {
             </button>
           </div>
 
-          <div className="aspect-[4/3] border-2 border-dashed border-gold-deep bg-card flex flex-col items-center justify-center text-center p-8">
-            <Calendar className="text-gold" size={48} strokeWidth={1.2} />
-            <p className="mt-6 font-display text-2xl">
-              {mode === "in-person" ? "In-Person Scheduling" : "Virtual Scheduling"}
-            </p>
-            {selected && (
-              <p className="mt-2 text-sm text-gold italic">
-                Booking: {selected.name}
-              </p>
-            )}
-            <p className="mt-3 text-sm text-muted-foreground max-w-md">
-              Calendly or Acuity scheduling widget will be embedded here once connected. This is a
-              placeholder for the demo — your live calendar will appear in this space.
-            </p>
-            <p className="mt-6 eyebrow text-[0.65rem]">Demo Placeholder</p>
-          </div>
+          <InlineWidget
+            url={mode === "in-person" ? CALENDLY_IN_PERSON_URL : CALENDLY_VIRTUAL_URL}
+            prefill={{
+              customAnswers: {
+                a1: selected?.name ?? "",
+              },
+            }}
+            styles={{ height: "660px", minWidth: "320px" }}
+          />
 
           <p className="mt-8 text-center text-sm text-muted-foreground">
             Questions before you book? <a href="/contact" className="text-gold border-b border-gold-deep">Contact Cheryl</a>.
