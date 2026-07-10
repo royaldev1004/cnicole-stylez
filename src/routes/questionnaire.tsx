@@ -125,7 +125,7 @@ function Questionnaire() {
       setSent(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
-      setError("Something went wrong — please try emailing Admin@CNicoleStylez.com directly.");
+      setError("Something went wrong — please try emailing Connect@cnicolestylez.com directly.");
     } finally {
       setSending(false);
     }

@@ -1,8 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { Resend } from "resend";
 
-const ADMIN_EMAIL = "lakan.sunga880@hotmail.com";
-const FROM_ADDRESS = "CNicole Stylez <onboarding@resend.dev>";
+const ADMIN_EMAIL = "Connect@cnicolestylez.com";
+const FROM_ADDRESS = "noreply@cnicolestylez.com";
 
 type ContactPayload = {
   type: "contact";

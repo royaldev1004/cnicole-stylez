@@ -42,7 +42,7 @@ function Contact() {
       });
       setSent(true);
     } catch {
-      setError("Something went wrong — please try emailing Admin@CNicoleStylez.com directly.");
+      setError("Something went wrong — please try emailing Connect@cnicolestylez.com directly.");
     } finally {
       setSending(false);
     }
