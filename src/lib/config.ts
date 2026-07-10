@@ -9,5 +9,5 @@ export const siteConfig = {
   instagramUrl: "#",
   website: "CNicoleStylez.com",
   websiteUrl: "https://CNicoleStylez.com",
-  copyrightYear: "2026",
+  copyrightYear: "2025",
 } as const;
