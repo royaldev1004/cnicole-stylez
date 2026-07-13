@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import cNicoleImageUrl from "@/assets/cnicole-image.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -30,10 +30,9 @@ function About() {
       <section className="container-editorial grid md:grid-cols-5 gap-12 pb-24">
         <div className="md:col-span-2">
           <div className="sticky top-28">
-            <PhotoPlaceholder
-              aspect="aspect-[3/4]"
-              label="Headshot coming soon"
-              sublabel="Professional portrait of Cheryl Nicole"
+            <img src={cNicoleImageUrl}
+                alt="Cheryl Nicole — founder"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
             />
           </div>
         </div>

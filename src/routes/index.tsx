@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ArrowRight, Sparkles, Shirt, Crown, Wand2 } from "lucide-react";
 import logoUrl from "@/assets/cnicole-logo.png";
 import heroImageUrl from "@/assets/hero-image.png";
+import cNicoleImageUrl from '@/assets/cnicole-image.png';
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,7 +62,7 @@ function Home() {
           <div className="relative fade-up">
             <div className="absolute -inset-4 rounded-sm bg-gradient-to-br from-[var(--color-gold-soft)] to-transparent blur-2xl opacity-60" />
             <div className="relative mx-auto max-w-md">
-              <img
+            <img
                 src={heroImageUrl}
                 alt="CNicole Stylez — curated fashion flat lay"
                 className="w-full aspect-[4/5] object-cover rounded-sm"
@@ -123,10 +123,9 @@ function Home() {
       <section className="py-24 bg-secondary">
         <div className="container-editorial grid md:grid-cols-5 gap-12 items-center">
           <div className="md:col-span-2">
-            <PhotoPlaceholder
-              aspect="aspect-[4/5]"
-              label="Founder portrait"
-              sublabel="Cheryl Nicole — headshot placeholder"
+            <img src={cNicoleImageUrl}
+                alt="Cheryl Nicole — founder"
+                className="w-full aspect-[4/5] object-cover rounded-sm"
             />
           </div>
           <div className="md:col-span-3">
