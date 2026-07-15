@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import { Check, Mail, Phone, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { sendFormEmail } from "@/lib/email";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -71,7 +72,11 @@ function Contact() {
             </li>
             <li className="flex items-center gap-4">
               <span className="w-10 h-10 grid place-items-center bg-secondary rounded-full"><Instagram size={16} className="text-gold" /></span>
-              <a href={siteConfig.instagramUrl} className="hover:text-gold">{siteConfig.instagram}</a>
+              <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold">{siteConfig.instagram}</a>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="w-10 h-10 grid place-items-center bg-secondary rounded-full"><TikTokIcon size={16} className="text-gold" /></span>
+              <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold">{siteConfig.tiktok}</a>
             </li>
             <li className="flex items-center gap-4">
               <span className="w-10 h-10 grid place-items-center bg-secondary rounded-full text-gold text-xs">→</span>

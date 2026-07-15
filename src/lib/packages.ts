@@ -36,7 +36,7 @@ export const packageGroups: PackageGroup[] = [
       {
         slug: "wardrobe-revival",
         name: "The Wardrobe Revival",
-        price: "Starting at $850",
+        price: "Starting at $400",
         tagline: "Transform your closet into a wardrobe that works for your life — not against it.",
         includes: [
           "In-home closet assessment",
@@ -50,7 +50,7 @@ export const packageGroups: PackageGroup[] = [
       {
         slug: "signature-shopping",
         name: "The Signature Shopping Experience",
-        price: "Starting at $1,500",
+        price: "Starting at $450",
         tagline: "A luxury personal shopping experience designed around your goals, budget, and lifestyle.",
         includes: [
           "Pre-shopping consultation",
@@ -66,7 +66,7 @@ export const packageGroups: PackageGroup[] = [
       {
         slug: "executive-image",
         name: "The Executive Image Experience",
-        price: "Starting at $2,500",
+        price: "Starting at $600",
         tagline: "Designed for professionals ready to elevate their executive presence.",
         includes: [
           "Personal Brand Consultation",
@@ -83,7 +83,7 @@ export const packageGroups: PackageGroup[] = [
       {
         slug: "complete-transformation",
         name: "The Complete Confidence Transformation",
-        price: "Starting at $4,500",
+        price: "Starting at $800",
         tagline: "This is more than styling — it's a complete image transformation.",
         highlight: true,
         includes: [

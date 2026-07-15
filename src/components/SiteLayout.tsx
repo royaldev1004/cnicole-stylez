@@ -3,6 +3,7 @@ import { Menu, X, Instagram, Mail, Phone } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import logoUrl from "@/assets/cnicole-logo.png";
 import { siteConfig } from "@/lib/config";
+import { TikTokIcon } from "@/components/icons/TikTokIcon";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -137,7 +138,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               </li>
               <li className="flex items-center gap-2">
                 <Instagram size={14} className="text-gold" />
-                <a href={siteConfig.instagramUrl} className="hover:text-gold">{siteConfig.instagram}</a>
+                <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold">{siteConfig.instagram}</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <TikTokIcon size={14} className="text-gold" />
+                <a href={siteConfig.tiktokUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold">{siteConfig.tiktok}</a>
               </li>
             </ul>
           </div>
