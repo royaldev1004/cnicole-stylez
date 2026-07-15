@@ -139,7 +139,7 @@ export const packageGroups: PackageGroup[] = [
         ],
         perfectFor: [
           "Corporate organizations",
-          "Women's leadership conferences",
+          "Leadership conferences",
           "Healthcare teams",
           "Networking organizations",
           "Professional associations",

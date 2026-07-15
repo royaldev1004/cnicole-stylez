@@ -57,6 +57,9 @@ function Home() {
                 View Packages
               </Link>
             </div>
+            <p className="mt-6 max-w-md text-sm italic text-muted-foreground">
+              Book today, get fitted tomorrow — quick service done right, from the comfort of your own home.
+            </p>
           </div>
 
           <div className="relative fade-up">

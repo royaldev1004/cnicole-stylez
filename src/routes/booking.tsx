@@ -97,7 +97,7 @@ function Booking() {
           />
 
           <p className="mt-8 text-center text-sm text-muted-foreground">
-            Questions before you book? <a href="/contact" className="text-gold border-b border-gold-deep">Contact Cheryl</a>.
+            Questions before you book? <a href="/contact" className="text-gold border-b border-gold-deep">Contact C Nicole Stylez</a>.
           </p>
         </div>
       </section>
