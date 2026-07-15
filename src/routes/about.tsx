@@ -22,7 +22,7 @@ function About() {
     <SiteLayout>
       <PageHeader
         eyebrow="About the Founder"
-        title={<>Meet Cheryl <span className="script text-gold text-6xl md:text-8xl">Nicole</span></>}
+        title={<>Meet C <span className="script text-gold text-6xl md:text-8xl">Nicole</span></>}
         rule
         className="pb-12"
       />
@@ -68,7 +68,7 @@ function About() {
             <blockquote className="script text-4xl md:text-5xl text-gold leading-tight">
               Because confidence never goes out of style.
             </blockquote>
-            <figcaption className="mt-4 eyebrow">— Cheryl Nicole</figcaption>
+            <figcaption className="mt-4 eyebrow">— C Nicole</figcaption>
           </figure>
         </div>
       </section>
