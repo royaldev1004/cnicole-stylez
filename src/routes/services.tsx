@@ -56,12 +56,14 @@ function Services() {
               <div className="flex-1 gold-rule" />
             </div>
 
-            <div className={`grid gap-6 ${group.packages.length >= 3 ? "md:grid-cols-2 xl:grid-cols-3" : "md:grid-cols-2"}`}>
+            <div className={`grid gap-9 md:gap-6 ${group.packages.length >= 3 ? "md:grid-cols-2 xl:grid-cols-3" : "md:grid-cols-2"}`}>
               {group.packages.map((p) => (
                 <article
                   key={p.slug}
                   className={`relative flex flex-col p-8 border bg-card transition-all duration-300 hover:-translate-y-1 ${
-                    p.highlight ? "border-gold-deep shadow-[0_20px_60px_-30px_rgba(201,162,75,0.6)]" : "border-border hover:border-gold-deep"
+                    p.highlight
+                      ? "border-gold-deep shadow-[0_20px_60px_-30px_rgba(201,162,75,0.6)]"
+                      : "border-border hover:border-gold-deep shadow-[0_14px_36px_-20px_rgba(22,20,15,0.3)] md:shadow-none"
                   }`}
                 >
                   {p.highlight && (
