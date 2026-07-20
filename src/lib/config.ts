@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Personal Stylist",
   founder: "Cheryl Nicole",
   email: "Connect@cnicolestylez.com",
-  phone: "253-441-7714",
+  phone: "(253) 544-7568",
   phoneHref: "tel:2534417714",
   instagram: "@cnicoles_stylez",
   instagramUrl: "https://www.instagram.com/cnicoles_stylez/",
