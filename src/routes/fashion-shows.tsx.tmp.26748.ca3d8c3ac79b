@@ -73,81 +73,6 @@ const categories = [
   },
 ];
 
-type RateItem = { label: string; rate: string };
-
-const aLaCarteServices: RateItem[] = [
-  { label: "Wardrobe steaming & garment prep", rate: "$50–$100/hour or $200–$500/event" },
-  { label: "Model check-in & backstage coordination", rate: "$35–$75/hour" },
-  { label: "Styling touch-ups", rate: "$50–$125/hour" },
-  { label: "Quality control before runway appearances", rate: "usually included in backstage stylist rates ($50–$125/hour)" },
-  { label: "Day-of Event Stylist", rate: "$500–$1,500+ per day" },
-];
-
-type EventPackage = {
-  name: string;
-  price: string;
-  tagline?: string;
-  includes: string[];
-};
-
-const eventPackages: EventPackage[] = [
-  {
-    name: "Essential Backstage Support",
-    price: "$350–$550",
-    includes: ["Up to 4 hours", "Up to 10 models", "Garment steaming", "Styling touch-ups", "Model lineup", "Quality control"],
-  },
-  {
-    name: "Professional Runway Support",
-    price: "$650–$950",
-    includes: [
-      "Up to 8 hours",
-      "Up to 20 models",
-      "Complete backstage styling management",
-      "Wardrobe prep",
-      "Steam and press",
-      "Model check-in",
-      "Outfit organization",
-      "Final runway inspections",
-      "Emergency sewing kit and styling kit",
-    ],
-  },
-  {
-    name: "Luxury Fashion Production Package",
-    price: "Starting at $950–$2,000+",
-    tagline: "Ideal for designers, boutiques, fashion weeks, and editorial productions.",
-    includes: [
-      "Pre-event planning meeting",
-      "Run-of-show wardrobe organization",
-      "Multiple outfit changes",
-      "Team coordination",
-      "VIP designer support",
-      "Styling assistants (if needed)",
-      "Full-day backstage management",
-    ],
-  },
-];
-
-const additionalFees: RateItem[] = [
-  { label: "Additional stylist", rate: "$40–$75/hour" },
-  { label: "Assistant stylist", rate: "$25–$45/hour" },
-  { label: "Travel outside the Seattle/Tacoma area", rate: "mileage or a flat travel fee" },
-  { label: "Last-minute bookings (within 72 hours)", rate: "15–30% rush fee" },
-  { label: "Overtime", rate: "1.5× hourly rate" },
-];
-
-function RateList({ items }: { items: RateItem[] }) {
-  return (
-    <div className="border-t border-border">
-      {items.map((item) => (
-        <div key={item.label} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 py-4 border-b border-border">
-          <span className="text-sm text-foreground">{item.label}</span>
-          <span className="text-sm text-gold font-medium shrink-0">{item.rate}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function FashionShows() {
   return (
     <SiteLayout>
@@ -200,63 +125,14 @@ function FashionShows() {
         </div>
       </section>
 
-      <section className="container-editorial py-16">
-        <div className="flex items-center gap-4 mb-8">
-          <h2 className="text-2xl md:text-3xl">A La Carte / Hourly Services</h2>
-          <div className="flex-1 gold-rule" />
+      <section className="py-20 bg-ink text-cream">
+        <div className="container-editorial text-center">
+          <p className="eyebrow-light">Investment</p>
+          <p className="mt-6 font-display text-3xl md:text-4xl">
+            Fashion Show Production & Styling
+          </p>
+          <p className="mt-4 script text-5xl md:text-6xl text-gold">Starting at $750</p>
         </div>
-        <RateList items={aLaCarteServices} />
-      </section>
-
-      <section className="container-editorial py-16">
-        <div className="flex items-center gap-4 mb-10">
-          <h2 className="text-2xl md:text-3xl">Event Packages</h2>
-          <div className="flex-1 gold-rule" />
-        </div>
-
-        <div className="grid gap-9 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {eventPackages.map((p) => (
-            <article
-              key={p.name}
-              className="relative flex flex-col p-8 border border-border hover:border-gold-deep bg-card transition-all duration-300 hover:-translate-y-1 shadow-[0_14px_36px_-20px_rgba(22,20,15,0.3)] md:shadow-none"
-            >
-              <h3 className="text-2xl pr-4">{p.name}</h3>
-              <p className="mt-3 script text-3xl text-gold">{p.price}</p>
-              {p.tagline && (
-                <p className="mt-4 text-sm italic text-muted-foreground leading-relaxed">{p.tagline}</p>
-              )}
-
-              <div className="mt-6">
-                <p className="eyebrow text-[0.65rem] mb-3">Includes</p>
-                <ul className="space-y-2">
-                  {p.includes.map((i) => (
-                    <li key={i} className="flex gap-2 text-sm">
-                      <Check size={14} className="text-gold mt-1 shrink-0" />
-                      <span>{i}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-auto pt-8">
-                <Link
-                  to="/contact"
-                  className="inline-flex w-full justify-center items-center px-6 py-3 text-xs tracking-[0.25em] uppercase rounded-sm transition-colors bg-ink text-cream"
-                >
-                  Inquire About This Package
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="container-editorial py-16">
-        <div className="flex items-center gap-4 mb-8">
-          <h2 className="text-2xl md:text-3xl">Additional Fees</h2>
-          <div className="flex-1 gold-rule" />
-        </div>
-        <RateList items={additionalFees} />
       </section>
 
       <section className="container-editorial py-20">
